@@ -1,0 +1,21 @@
+{
+  "name": "class-2025-5-site",
+  "version": "2.0.0",
+  "description": "三峡大学 计算机科学与技术2025级5班 · 班级网站",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "multer": "^2.0.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^25.16.0"
+  }
+}

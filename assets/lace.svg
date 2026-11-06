@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="36" viewBox="0 0 160 36">
+  <path d="M0 18 L8 10 L16 18 L24 10 L32 18 L40 10 L48 18 L56 10 L64 18 L72 10 L80 18 L88 10 L96 18 L104 10 L112 18 L120 10 L128 18 L136 10 L144 18 L152 10 L160 18"
+        fill="none" stroke="#9DBBE0" stroke-width="1.6" opacity="0.8"/>
+  <path d="M0 26 L8 18 L16 26 L24 18 L32 26 L40 18 L48 26 L56 18 L64 26 L72 18 L80 26 L88 18 L96 26 L104 18 L112 26 L120 18 L128 26 L136 18 L144 26 L152 18 L160 26"
+        fill="none" stroke="#C7D9EF" stroke-width="1.2" opacity="0.75"/>
+  <circle cx="8" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+  <circle cx="24" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+  <circle cx="40" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+  <circle cx="56" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+  <circle cx="72" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+  <circle cx="88" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+  <circle cx="104" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+  <circle cx="120" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+  <circle cx="136" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+  <circle cx="152" cy="10" r="1.7" fill="#B7CCE8" opacity="0.9"/>
+</svg>

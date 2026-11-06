@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>三峡大学 · 计科2025级5班 | 班级风采展厅</title>
+    <meta name="description" content="计算机科学与技术2025级5班的线上展厅：班级相册（按活动分册）、荣誉殿堂、项目展示、班级社区、期末复习、留言墙、聊天室和游戏厅。">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23A9C8EA'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Georgia' font-weight='bold'>5</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 梦幻天空背景 & 漂浮装饰 -->
+    <div class="sky-bg" aria-hidden="true"></div>
+    <div class="sky-veil" aria-hidden="true"></div>
+    <div class="float-layer" aria-hidden="true">
+        <span class="orb o1"></span>
+        <span class="orb o2"></span>
+        <span class="orb o3"></span>
+        <img class="cloud c1" src="assets/cloud1.png" alt="">
+        <img class="cloud c2" src="assets/cloud2.png" alt="">
+        <img class="cloud c3" src="assets/cloud1.png" alt="">
+        <img class="cloud c4" src="assets/cloud2.png" alt="">
+        <img class="cloud c5" src="assets/cloud1.png" alt="">
+        <img class="flower f1" src="assets/flower.svg" alt="">
+        <img class="flower f2" src="assets/flower.svg" alt="">
+        <img class="flower f3" src="assets/flower.svg" alt="">
+        <img class="flower f4" src="assets/flower.svg" alt="">
+        <img class="cloud-line d1" src="assets/cloud-line.svg" alt="">
+        <img class="cloud-line d2" src="assets/cloud-line.svg" alt="">
+        <i class="spark s1"></i><i class="spark s2"></i><i class="spark s3"></i>
+        <i class="spark s4"></i><i class="spark s5"></i><i class="spark s6"></i>
+    </div>
+
+    <!-- 离线提示：静态打开（如 VSCode Live Preview）时显示 -->
+    <div class="offline-banner" id="offlineBanner" hidden>
+        ⚠️ 未连接到服务器，照片/社区数据无法加载 —— 请在项目目录运行 <b>npm start</b>，然后用浏览器访问
+        <b>http://localhost:3000</b>（VSCode 静态预览不支持接口）
+        <button id="offlineClose" aria-label="关闭提示">✕</button>
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- ============ 顶部胶囊导航 ============ -->
+    <header class="hall-nav" id="topNav">
+        <div class="nav-inner glass">
+            <a href="#home" class="logo">
+                <span class="logo-mark">5</span>
+                <span class="logo-name">计科<em>2025 · 5班</em></span>
+            </a>
+            <nav class="nav-links" id="navLinks">
+                <a href="#home" class="active">首页</a>
+                <a href="#album">相册</a>
+                <a href="#honor">荣誉</a>
+                <a href="#projects">项目</a>
+                <a href="#community">社区</a>
+                <a href="#review">复习</a>
+                <a href="#board">留言</a>
+                <a href="#chat">聊天</a>
+                <a href="#games">游戏</a>
+            </nav>
+            <button class="nav-burger" id="navBurger" aria-label="打开菜单">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============ 序厅 · Hero ============ -->
+        <section id="home" class="hall hall-hero">
+            <div class="hero-head">
+                <p class="eyebrow">THREE GORGES UNIVERSITY · CLASS 5 · 2025</p>
+                <h1 class="display">
+                    <span class="display-en">Class 5 in Bloom</span>
+                    <span class="display-cn">班级风采展厅</span>
+                </h1>
+                <p class="lede">记录每一次成长，定格每一份感动 —— 这是属于计算机科学与技术2025级5班的青春答卷。</p>
+            </div>
+
+            <!-- 展厅主橱窗 -->
+            <div class="showcase glass reveal">
+                <div class="showcase-stage">
+                    <div class="stage-imgs" id="heroStage"></div>
+                    <button class="stage-arrow prev" id="heroPrev" aria-label="上一张">‹</button>
+                    <button class="stage-arrow next" id="heroNext" aria-label="下一张">›</button>
+                </div>
+                <div class="showcase-caption">
+                    <span class="cap-arrow">◀</span>
+                    <span id="heroCaption">正在接收光影…</span>
+                    <span class="cap-arrow">▶</span>
+                </div>
+                <div class="showcase-thumbs" id="heroThumbs"></div>
+            </div>
+
+            <!-- 展厅名片 -->
+            <div class="profile-card glass reveal">
+                <div class="avatar">
+                    <img src="images/志愿活动/班级志愿活动1.png" alt="五班志愿队">
+                </div>
+                <div class="profile-text">
+                    <p class="profile-kicker">CLASS 5 · 2025 · GOOD DAYS</p>
+                    <h3>计科2025级5班 · 青春日记</h3>
+                    <p class="profile-desc">从西陵的风到马拉松的赛道，从团课的讲台到养老院的庭院，从代码到舞台——我们用照片记录每一次出发。这里收藏五班的故事，也等你写下新的那一页。</p>
+                    <div class="mini-stats">
+                        <div><b id="statPhotos">–</b><span>相册照片</span></div>
+                        <div><b id="statAwards">21</b><span>荣誉奖状</span></div>
+                        <div><b>6</b><span>志愿项目</span></div>
+                        <div><b>3</b><span>项目作品</span></div>
+                    </div>
+                    <div class="hero-cta">
+                        <a href="#album" class="btn-soft">翻翻班级相册 <i>→</i></a>
+                        <button class="btn-cinema" id="heroCinema">▶ 放映模式</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="scroll-hint"><span></span>下滑，开始参观</div>
+        </section>
+
+        <div class="lace-divider" aria-hidden="true"></div>
+
+        <!-- ============ 01 · 班级相册 ============ -->
+        <section id="album" class="hall">
+            <div class="hall-plaque reveal">
+                <span class="num">01</span>
+                <h2>班级相册</h2>
+                <p>迎新晚会、运动会、志愿红、团建……每个活动都是一本相册。点进去欣赏、留言互动，也可以往相册里添照片。</p>
+            </div>
+
+            <div class="album-toolbar reveal">
+                <span class="album-tip">📷 每个相册的封面，都是当期的高光照片</span>
+                <button class="btn-soft" id="albumUploadBtn">＋ 上传照片</button>
+            </div>
+
+            <div class="album-wall" id="albumWall"></div>
+        </section>
+
+        <div class="lace-divider" aria-hidden="true"></div>
+
+        <!-- ============ 02 · 荣誉殿堂 ============ -->
+        <section id="honor" class="hall">
+            <div class="hall-plaque reveal">
+                <span class="num">02</span>
+                <h2>荣誉殿堂</h2>
+                <p>共 <span id="awardCount">21</span> 张奖状与证书，记录着五班同学在学业、志愿、团学与竞赛中的每一次闪光。</p>
+            </div>
+            <div class="glass panel reveal">
+                <div class="honor-stats">
+                    <div class="honor-stat"><b id="honorStatCount">21+</b><span>荣誉证书</span></div>
+                    <div class="honor-stat"><b>省二等奖</b><span>蓝桥杯</span></div>
+                    <div class="honor-stat"><b>三等奖</b><span>求索杯编程赛</span></div>
+                    <div class="honor-stat"><b>第 1 名</b><span>马拉松项目</span></div>
+                </div>
+                <!-- 3D 立体环绕奖状 -->
+                <div class="honor-3d">
+                    <div class="honor-stage" id="honorStage">
+                        <div class="honor-ring" id="honorRing"></div>
+                    </div>
+                    <div class="honor-3d-bar">
+                        <button class="honor-nav" id="honorPrev" aria-label="上一张">‹</button>
+                        <span class="honor-hint">左右拖拽旋转 · 点击中间的奖状放大查看</span>
+                        <button class="honor-nav" id="honorNext" aria-label="下一张">›</button>
+                    </div>
+                    <div class="honor-count" id="honorCount">1 / 1</div>
+                </div>
+            </div>
+        </section>
+
+        <div class="lace-divider" aria-hidden="true"></div>
+
+        <!-- ============ 03 · 项目展示厅 ============ -->
+        <section id="projects" class="hall">
+            <div class="hall-plaque reveal">
+                <span class="num">03</span>
+                <h2>项目展示厅</h2>
+                <p>学以致用，代码会说话。看看五班同学亲手写下的项目作品。</p>
+            </div>
+            <div class="glass panel reveal">
+                <div class="project-grid" id="projectGrid"></div>
+            </div>
+        </section>
+
+        <div class="lace-divider" aria-hidden="true"></div>
+
+        <!-- ============ 诗笺 · 相片堆叠 ============ -->
+        <section class="hall hall-quote">
+            <div class="quote-band glass reveal">
+                <div class="photo-stack" id="quoteStack"></div>
+                <div class="quote-text">
+                    <p class="quote-en">Slow down, breathe deeply,<br>and appreciate the simple<br>joys that make life so beautiful.</p>
+                    <p class="quote-cn">慢下来，深呼吸，<br>欣赏那些让生活美好的小事。</p>
+                    <p class="quote-sign">—— 五班的日常</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="lace-divider" aria-hidden="true"></div>
+
+        <!-- ============ 04 · 班级社区 ============ -->
+        <section id="community" class="hall">
+            <div class="hall-plaque reveal">
+                <span class="num">04</span>
+                <h2>班级社区</h2>
+                <p>发一条动态，给同学点赞、评论 —— 五班的「朋友圈」，一起把这里聊热。</p>
+            </div>
+
+            <div class="glass panel reveal">
+                <div class="post-composer">
+                    <div class="composer-row">
+                        <input type="text" id="postName" placeholder="你的名字" maxlength="12">
+                    </div>
+                    <textarea id="postContent" placeholder="分享点什么？今天的小事、想说的话、上课的趣事……" maxlength="500"></textarea>
+                    <div class="composer-bottom">
+                        <span class="char-count"><span id="postCount">0</span> / 500</span>
+                        <button class="btn-soft btn-send" id="postSend">发布 ✨</button>
+                    </div>
+                </div>
+                <div class="post-list" id="postList"></div>
+                <p class="album-empty" id="postEmpty">还没有动态，来发第一条吧！</p>
+            </div>
+        </section>
+
+        <div class="lace-divider" aria-hidden="true"></div>
+
+        <!-- ============ 05 · 期末复习 ============ -->
+        <section id="review" class="hall">
+            <div class="hall-plaque reveal">
+                <span class="num">05</span>
+                <h2>期末复习</h2>
+                <p>五班期末复习指南：科目重点、复习方法、每日打卡互相监督。</p>
+            </div>
+
+            <div class="glass panel reveal">
+                <div class="review-grid" id="reviewGrid"></div>
+
+                <div class="review-bottom">
+                    <div class="review-tips">
+                        <h4>五班复习小贴士</h4>
+                        <p>① 先过课本再刷题，错题本每周翻一次；<br>
+                           ② 专业课多动手写代码，别只看不练；<br>
+                           ③ 组队互相讲题，讲得清楚才是真的会。</p>
+                    </div>
+                    <div class="review-checkin">
+                        <button class="btn-soft" id="reviewCheckin">今日复习打卡 ✓</button>
+                        <span class="review-status" id="reviewStatus">本机累计 0 天</span>
+                    </div>
+                </div>
+
+                <!-- 复习资料共享 -->
+                <div class="share-box">
+                    <div class="share-head">
+                        <h4>📎 复习资料共享</h4>
+                        <p>往年试卷、笔记、重点整理都可以传上来，大家一起过期末。</p>
+                    </div>
+                    <div class="share-drop" id="shareDrop">
+                        <div>
+                            <b>点击或拖拽上传资料</b>
+                            <span>支持 PDF / Word / PPT / Excel / 图片 / 压缩包，单个 ≤ 20MB</span>
+                        </div>
+                        <input type="file" id="shareInput" multiple hidden accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.zip,.rar,.7z,.txt,.md,image/*">
+                    </div>
+                    <div class="share-controls">
+                        <input type="text" id="shareName" placeholder="上传者名字" maxlength="12">
+                        <select id="shareCat">
+                            <option value="往年试卷">往年试卷</option>
+                            <option value="复习笔记">复习笔记</option>
+                            <option value="重点整理">重点整理</option>
+                            <option value="其他资料">其他资料</option>
+                        </select>
+                    </div>
+                    <div class="share-list" id="shareList"></div>
+                    <p class="album-empty" id="shareEmpty" hidden>还没有资料，来传第一份吧！</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="lace-divider" aria-hidden="true"></div>
+
+        <!-- ============ 06 · 留言墙 ============ -->
+        <section id="board" class="hall">
+            <div class="hall-plaque reveal">
+                <span class="num">06</span>
+                <h2>留言墙</h2>
+                <p>写下一句话，给班级、给同学、也给未来的自己。</p>
+            </div>
+
+            <div class="glass panel reveal">
+                <div class="board-composer">
+                    <div class="composer-row">
+                        <input type="text" id="msgName" placeholder="你的名字" maxlength="12">
+                        <div class="emoji-pick" id="emojiPick"></div>
+                    </div>
+                    <textarea id="msgContent" placeholder="想说什么呢？……（留完言后会得到一枚专属删除码，可删除自己的留言）" maxlength="300"></textarea>
+                    <div class="composer-bottom">
+                        <span class="char-count"><span id="msgCount">0</span> / 300</span>
+                        <button class="btn-soft btn-send" id="msgSend">贴上去 ✨</button>
+                    </div>
+                </div>
+                <div class="board-wall" id="boardWall"></div>
+            </div>
+        </section>
+
+        <div class="lace-divider" aria-hidden="true"></div>
+
+        <!-- ============ 07 · 聊天室 ============ -->
+        <section id="chat" class="hall">
+            <div class="hall-plaque reveal">
+                <span class="num">07</span>
+                <h2>聊天室</h2>
+                <p>全班在线唠嗑，进来说句话吧。</p>
+            </div>
+
+            <div class="glass panel reveal">
+                <div class="chat-panel">
+                    <div class="chat-head">
+                        <span class="dot" id="chatDot"></span>
+                        <span class="chat-status" id="chatStatus">未连接</span>
+                        <span class="online-count">在线 <b id="onlineCount">0</b> 人</span>
+                    </div>
+                    <div class="chat-body" id="chatBody">
+                        <div class="chat-hint" id="chatHint">点击下方输入框，起个昵称就能聊啦~</div>
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="chatInput" placeholder="说点什么…（回车发送）" maxlength="500" autocomplete="off">
+                        <button id="chatSend" class="btn-soft btn-send">发送</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="lace-divider" aria-hidden="true"></div>
+
+        <!-- ============ 08 · 游戏厅 ============ -->
+        <section id="games" class="hall">
+            <div class="hall-plaque reveal">
+                <span class="num">08</span>
+                <h2>游戏厅</h2>
+                <p>学习之余放松一下：2048、贪吃蛇、五子棋、翻牌记忆。</p>
+            </div>
+
+            <div class="glass panel reveal">
+                <div class="game-tabs" id="gameTabs">
+                    <button class="game-tab active" data-game="g2048">🔢 2048</button>
+                    <button class="game-tab" data-game="snake">🐍 贪吃蛇</button>
+                    <button class="game-tab" data-game="gomoku">⚫ 五子棋</button>
+                    <button class="game-tab" data-game="memory">🃏 翻牌记忆</button>
+                </div>
+
+                <div class="game-stage">
+                    <!-- 2048 -->
+                    <div class="game-panel active" id="g2048">
+                        <div class="game-bar">
+                            <div class="game-score">分数 <b id="g2048Score">0</b></div>
+                            <div class="game-score">最佳 <b id="g2048Best">0</b></div>
+                            <button class="btn-ghost" id="g2048Restart">重新开始</button>
+                        </div>
+                        <div class="board2048" id="board2048"></div>
+                        <p class="game-tip">方向键 / WASD / 滑动屏幕移动方块，相同数字合成 2048！</p>
+                    </div>
+
+                    <!-- 贪吃蛇 -->
+                    <div class="game-panel" id="snake">
+                        <div class="game-bar">
+                            <div class="game-score">分数 <b id="snakeScore">0</b></div>
+                            <div class="game-score">最高 <b id="snakeBest">0</b></div>
+                            <button class="btn-ghost" id="snakePause">暂停</button>
+                        </div>
+                        <div class="snake-wrap">
+                            <canvas id="snakeCanvas" width="480" height="480"></canvas>
+                            <div class="game-overlay" id="snakeOverlay"><b>点击开始</b><span>方向键 / WASD 控制，手机用下方按键</span></div>
+                        </div>
+                        <div class="dpad" id="snakeDpad">
+                            <button data-d="up">▲</button>
+                            <div>
+                                <button data-d="left">◀</button>
+                                <button data-d="down">▼</button>
+                                <button data-d="right">▶</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 五子棋 -->
+                    <div class="game-panel" id="gomoku">
+                        <div class="game-bar">
+                            <div class="game-score" id="gomokuTurn">⚫ 黑棋落子</div>
+                            <button class="btn-ghost" id="gomokuUndo">悔棋</button>
+                            <button class="btn-ghost" id="gomokuRestart">重新开始</button>
+                        </div>
+                        <div class="gomoku-wrap">
+                            <canvas id="gomokuCanvas" width="480" height="480"></canvas>
+                            <div class="game-overlay" id="gomokuOverlay" hidden><b id="gomokuResult"></b><span>点击棋盘空白处重新开始</span></div>
+                        </div>
+                        <p class="game-tip">双人对战：黑棋先手，连成五子获胜。悔棋退回两步。</p>
+                    </div>
+
+                    <!-- 翻牌记忆 -->
+                    <div class="game-panel" id="memory">
+                        <div class="game-bar">
+                            <div class="game-score">步数 <b id="memoryMoves">0</b></div>
+                            <div class="game-score">配对 <b id="memoryPairs">0/8</b></div>
+                            <button class="btn-ghost" id="memoryRestart">重新开始</button>
+                        </div>
+                        <div class="memory-grid" id="memoryGrid"></div>
+                        <p class="game-tip">翻开两张相同的班级照片完成配对，看看谁对班级记忆最深！</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ============ 页脚 ============ -->
+    <footer class="hall-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <span class="logo-mark">5</span>
+                <div>
+                    <b>计算机科学与技术 2025级5班</b>
+                    <p>三峡大学 · 以梦为马，不负韶华</p>
+                </div>
+            </div>
+            <p class="footer-note">Made with ❤️ by 五班全体同学 · 一起把这里填满回忆吧</p>
+            <a href="#home" class="back-top">回到序厅 ↑</a>
+        </div>
+    </footer>
+
+    <!-- ============ 灯箱 ============ -->
+    <div class="lightbox" id="lightbox">
+        <button class="lb-close" id="lbClose" aria-label="关闭">✕</button>
+        <button class="lb-nav lb-prev" id="lbPrev" aria-label="上一张">‹</button>
+        <button class="lb-nav lb-next" id="lbNext" aria-label="下一张">›</button>
+        <div class="lb-stage">
+            <div class="lb-media">
+                <img id="lbImg" alt="">
+                <video id="lbVideo" controls playsinline></video>
+                <div class="danmaku-layer" id="danmakuLayer" aria-hidden="true"></div>
+            </div>
+            <div class="lb-caption glass">
+                <div class="lb-info">
+                    <b id="lbTitle"></b>
+                    <span id="lbMeta"></span>
+                </div>
+                <div class="lb-actions">
+                    <span class="lb-cmt-count" id="lbCmtCount">💬 0</span>
+                    <button id="lbLike" title="点赞">❤️ <span id="lbLikeCount">0</span></button>
+                    <a id="lbDownload" title="下载" download>⬇ 下载</a>
+                    <button id="lbDelete" title="删除">🗑 删除</button>
+                </div>
+            </div>
+            <div class="lb-comment-bar glass" id="lbCommentBar">
+                <input type="text" id="cmtName" placeholder="昵称" maxlength="12">
+                <input type="text" id="cmtInput" placeholder="给这张照片留句话，会变成弹幕飘过去～" maxlength="80">
+                <button class="btn-soft btn-send" id="cmtSend">发弹幕</button>
+                <button class="btn-ghost cmt-clear" id="cmtClear" title="站长可清空本图弹幕">清空</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ 放映模式 ============ -->
+    <div class="cinema" id="cinema">
+        <div class="cinema-backdrop" id="cinemaBackdrop"></div>
+        <button class="cinema-close" id="cinemaClose" aria-label="退出放映">✕</button>
+        <div class="cinema-stage">
+            <img id="cinemaImg" alt="">
+        </div>
+        <div class="cinema-caption glass">
+            <span class="cinema-cat" id="cinemaCat"></span>
+            <b id="cinemaTitle"></b>
+            <span class="cinema-count" id="cinemaCount"></span>
+            <div class="cinema-controls">
+                <button id="cinemaPrev" title="上一张">‹</button>
+                <button id="cinemaPlay" title="播放/暂停">⏸</button>
+                <button id="cinemaNext" title="下一张">›</button>
+            </div>
+        </div>
+        <div class="cinema-progress"><div id="cinemaBar"></div></div>
+        <div class="cinema-hint">← → 切换 · 空格 播放/暂停 · Esc 退出</div>
+    </div>
+
+    <!-- 放映模式浮动按钮 -->
+    <button class="cinema-fab" id="cinemaFab" title="进入放映模式">▶ 放映模式</button>
+
+    <!-- ============ 相册浏览 ============ -->
+    <div class="album-viewer" id="albumViewer">
+        <div class="book-shell glass">
+            <div class="book-topbar">
+                <img class="album-viewer-cover" id="albumViewerCover" alt="">
+                <div class="album-viewer-info">
+                    <h3 id="albumViewerTitle"></h3>
+                    <p id="albumViewerDesc"></p>
+                    <span class="album-viewer-meta" id="albumViewerMeta"></span>
+                </div>
+                <button class="btn-soft album-upload-btn" id="albumViewerUpload">＋ 上传到此相册</button>
+                <button class="album-viewer-close" id="albumViewerClose" aria-label="关闭">✕</button>
+            </div>
+
+            <div class="book" id="book">
+                <div class="book-under" id="bookUnder"></div>
+                <div class="book-sheet" id="bookSheet">
+                    <div class="book-face front" id="bookFront"></div>
+                    <div class="book-face back" id="bookBack"></div>
+                </div>
+                <button class="book-nav prev" id="bookPrev" aria-label="上一页">‹</button>
+                <button class="book-nav next" id="bookNext" aria-label="下一页">›</button>
+                <span class="book-page-label" id="bookPageLabel"></span>
+            </div>
+
+            <div class="book-commentbar">
+                <div class="book-comments" id="bookComments"></div>
+                <div class="book-comment-input">
+                    <input type="text" id="bookCmtName" placeholder="昵称" maxlength="12">
+                    <input type="text" id="bookCmtInput" placeholder="给这一页的照片留言（会变成弹幕）" maxlength="80">
+                    <button class="btn-soft btn-send" id="bookCmtSend">发留言</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ 上传照片弹窗 ============ -->
+    <div class="modal-mask" id="uploadModal" hidden>
+        <div class="modal glass upload-modal">
+            <h3>上传照片到相册</h3>
+            <p class="modal-sub" id="uploadModalSub">选择相册，照片会归到对应相册里</p>
+            <div class="upload-drop" id="uploadDrop">
+                <div class="upload-icon">☁️</div>
+                <p><b>点击选择</b> 或把照片 / 视频拖到这里</p>
+                <p class="upload-tip">支持 jpg · png · gif · webp · mp4，单文件 ≤ 50MB，照片会自动压缩</p>
+                <input type="file" id="uploadInput" accept="image/*,video/mp4,video/webm,video/mov" multiple hidden>
+            </div>
+            <div class="upload-controls">
+                <input type="text" id="uploadName" placeholder="你的名字" maxlength="12">
+                <select id="uploadCat"></select>
+            </div>
+            <div class="upload-progress" id="uploadProgress" hidden>
+                <div class="bar-track"><div class="bar-fill" id="uploadBar"></div></div>
+                <span id="uploadStatus"></span>
+            </div>
+            <div class="upload-modal-actions">
+                <button class="btn-ghost" id="uploadClose">关闭</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ 昵称弹窗 ============ -->
+    <div class="modal-mask" id="nickModal" hidden>
+        <div class="modal glass">
+            <h3>给自己起个昵称 👋</h3>
+            <p class="modal-sub">进入班级聊天室，和大家打个招呼吧</p>
+            <input type="text" id="nickInput" placeholder="例如：老王、学习委员…" maxlength="12">
+            <button class="btn-soft" id="nickOk">进入聊天室</button>
+        </div>
+    </div>
+
+    <!-- 轻提示 -->
+    <div class="toast" id="toast"></div>
+
+    <script src="app.js"></script>
+    <script src="games.js"></script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+{
+  "port": 3000,
+  "adminPassword": "admin123",
+  "maxUploadMB": 50,
+  "siteName": "三峡大学 计算机科学与技术2025级5班",
+  "chatHistoryLimit": 1000
+}
