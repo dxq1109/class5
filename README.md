@@ -44,8 +44,6 @@ npm start       # 启动网站
 
 启动时控制台会显示地址。首次运行会自动把 `images/` 和 `videos/` 里的现有素材导入数据库。
 
-> ⚠️ **不要用 VSCode 的 Live Preview / 文件预览直接打开 index.html**：
-> 照片、社区、弹幕等数据都来自后端接口 `/api/*`，静态预览拿不到数据，页面会显示「未连接到服务器」。
 > 正确步骤：在 VSCode 终端里运行 `npm start`，然后用浏览器打开 **http://localhost:3000**。
 > （想在 VSCode 里看：先启动服务，再按 `Ctrl+Shift+P` → 输入 `Simple Browser: Show` → 填 `http://localhost:3000`。）
 
