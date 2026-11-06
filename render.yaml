@@ -1,0 +1,8 @@
+# Render 免费部署蓝图（Blueprint）
+# 在 render.com 新建 Blueprint，选择包含本文件的仓库即可自动创建服务。
+services:
+  - type: web
+    name: class-2025-5
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
